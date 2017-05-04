@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "Tyler",
+    "password": "bernard",
+    "database": "table-api",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "Tyler",
+    "password": "bernard",
+    "database": "table-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

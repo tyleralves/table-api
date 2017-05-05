@@ -2,7 +2,7 @@
   "development": {
     "username": "Tyler",
     "password": "bernard",
-    "database": "table-api",
+    "database": "table-dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

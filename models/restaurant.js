@@ -1,11 +1,20 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Restaurant = sequelize.define('Restaurant', {
-    name: DataTypes.STRING
+    name: {type: DataTypes.STRING, allowNull: false},
+    phone: DataTypes.INTEGER,
+    address: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Restaurant.hasMany(models.Table, {
+          foreignKey: 'restaurantId',
+          as: 'tables',
+        });
+        Restaurant.belongsTo(models.Reservation, {
+          foreignKey: 'reservationId',
+          onDelete: 'CASCADE'
+        });
       }
     }
   });

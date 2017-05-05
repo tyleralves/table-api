@@ -10,17 +10,17 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'userId',
           onDelete: 'CASCADE'
         });
-        Reservation.hasOne(models.User, {
-          foreignKey: 'reservationId',
-          as: 'user'
+        Reservation.belongsTo(models.User, {
+          foreignKey: 'userId',
+          onDelete: 'CASCADE'
         });
-        Reservation.hasOne(models.Table, {
-          foreignKey: 'reservationId',
-          as: 'table'
+        Reservation.belongsTo(models.Table, {
+          foreignKey: 'tableId',
+          onDelete: 'CASCADE'
         });
-        Reservation.hasOne(models.Restaurant, {
-          foreignKey: 'reservationId',
-          as: 'restaurant'
+        Reservation.belongsTo(models.Restaurant, {
+          foreignKey: 'restaurantId',
+          onDelete: 'CASCADE'
         });
       }
     }

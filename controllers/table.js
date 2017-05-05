@@ -1,4 +1,5 @@
 const Table = require('../models').Table;
+const Reservation = require('../models').Reservation;
 
 module.exports = {
   create(req, res) {
@@ -14,7 +15,12 @@ module.exports = {
   },
   show(req, res) {
     return Table
-      .findAll({})
+      .findAll({
+        include: {
+          model: Reservation,
+          as: 'reservations'
+        }
+      })
       .then(table => res.status(201).send(table))
       .catch(error => res.status(400).send(error));
   }

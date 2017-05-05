@@ -14,10 +14,6 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'userId',
           as: 'reservations'
         });
-        User.belongsTo(models.Reservation, {
-          foreignKey: 'reservationId',
-          onDelete: 'CASCADE'
-        });
       }
     }
   });

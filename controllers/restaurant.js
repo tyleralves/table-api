@@ -1,4 +1,5 @@
 const Restaurant = require('../models').Restaurant;
+const Reservation = require('../models').Reservation;
 const Table = require('../models').Table;
 
 module.exports = {
@@ -14,7 +15,16 @@ module.exports = {
   },
   show(req, res) {
     return Restaurant
-      .find({id: req.param.restaurantId})
+      .find({
+        where: {id: req.params.restaurantId},
+        include: [{
+          model: Table,
+          as: 'tables'
+        }, {
+          model: Reservation,
+          as: 'reservations'
+        }]
+      })
         .then(restaurants => res.status(201).send(restaurants))
         .catch(error => res.status(400).send(error));
   },

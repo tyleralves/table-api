@@ -2,43 +2,29 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    // Add reservationId to table, restaurant, user
     queryInterface.addColumn(
-      'Tables',
-      'reservationId',
+      'Reservations',
+      'restaurantId',
       {
         onDelete: 'CASCADE',
         type: Sequelize.INTEGER,
         references: {
-          model: 'Reservations',
+          model: 'Restaurants',
           key: 'id',
-          as: 'reservationId'
+          as: 'restaurantId'
         }
       }
     );
     queryInterface.addColumn(
-      'Restaurants',
-      'reservationId',
+      'Reservations',
+      'tableId',
       {
         onDelete: 'CASCADE',
         type: Sequelize.INTEGER,
         references: {
-          model: 'Reservations',
+          model: 'Tables',
           key: 'id',
-          as: 'reservationId'
-        }
-      }
-    );
-    queryInterface.addColumn(
-      'Users',
-      'reservationId',
-      {
-        onDelete: 'CASCADE',
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Reservations',
-          key: 'id',
-          as: 'reservationId'
+          as: 'tableId'
         }
       }
     );

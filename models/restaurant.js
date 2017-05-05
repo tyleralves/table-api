@@ -11,9 +11,9 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'restaurantId',
           as: 'tables',
         });
-        Restaurant.belongsTo(models.Reservation, {
-          foreignKey: 'reservationId',
-          onDelete: 'CASCADE'
+        Restaurant.hasMany(models.Reservation, {
+          foreignKey: 'restaurantId',
+          as: 'reservations'
         });
       }
     }

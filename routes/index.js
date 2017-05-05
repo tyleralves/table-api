@@ -1,20 +1,15 @@
+const reservationsController = require('../controllers').reservation;
 const restaurantsController = require('../controllers').restaurant;
 const tablesController = require('../controllers').table;
+const usersController = require('../controllers').user;
 
 module.exports = (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Todos API!',
-  }));
 
   // Restaurants
-
   app
     .route('/api/restaurants')
+    .get(restaurantsController.list)
     .post(restaurantsController.create);
-
-  app
-    .route('/api/restaurants/list')
-    .get(restaurantsController.list);
 
   app
     .route('/api/restaurants/:restaurantId')
@@ -25,5 +20,26 @@ module.exports = (app) => {
     .get(tablesController.show)
     .post(tablesController.create);
 
+  app
+    .route('/api/restaurants/:restaurantId/reservations')
+    .get(reservationsController.listByRestaurant)
+    .post(reservationsController.createByRestaurant);
+
+  // Users
+  app
+    .route('/api/users')
+    .get(usersController.list)
+    .post(usersController.create);
+
+  app
+    .route('/api/users/:userId')
+    .get(usersController.show);
+
+  app
+    .route('/api/users/:userId/reservations')
+    .get(reservationsController.listByUser)
+    .post(reservationsController.createByUser);
 
 };
+
+

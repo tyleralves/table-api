@@ -9,6 +9,7 @@ module.exports = {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         location: req.body.location,
+        photo: req.body.photo,
         restaurantId: req.params.restaurantId
       })
       .then(table => res.status(201).send(table))

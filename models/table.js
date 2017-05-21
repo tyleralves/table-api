@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Table = sequelize.define('Table', {
+    location: {type: DataTypes.STRING, allowNull: false},
     seats: {type: DataTypes.INTEGER, allowNull: false},
     startTime: {type: DataTypes.INTEGER, allowNull: false},
     endTime: {type: DataTypes.INTEGER, allowNull: false}
